@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5a777d77d75344648d8298fffa742016" Name="Diagram1">
+        <EntityTypeShape EntityType="BanHangOnlineModel.baiViet" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangOnlineModel.ctDonHang" Width="1.5" PointX="10.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangOnlineModel.donHang" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangOnlineModel.khachHang" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangOnlineModel.loaiSP" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangOnlineModel.quanHuyen" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangOnlineModel.sanPham" Width="1.5" PointX="8.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangOnlineModel.taiKhoanTV" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="BanHangOnlineModel.FK__baiViet__maLoai__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangOnlineModel.FK__baiViet__taiKhoa__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangOnlineModel.FK__ctDonHang__maSP__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangOnlineModel.FK__ctDonHang__soDH__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangOnlineModel.FK__donHang__maKH__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangOnlineModel.FK__donHang__taiKhoa__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangOnlineModel.FK__khachHang__maQH__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangOnlineModel.FK__sanPham__maLoai__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangOnlineModel.FK__taiKhoanTV__maQH__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangOnlineModel.FK__sanPham__taiKhoa__32E0915F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

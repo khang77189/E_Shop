@@ -1,0 +1,2 @@
+H:\E_Shop\E_Shop\obj\Release\E_Shop.csproj.AssemblyReference.cache
+H:\E_Shop\E_Shop\obj\Release\E_Shop.csproj.CoreCompileInputs.cache

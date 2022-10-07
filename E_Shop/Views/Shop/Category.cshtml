@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Shop | Eshopper";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+}
+@using Thay_Huy_Tuan_3_Entity.Models;
+
+<div class="col-sm-9 padding-right">
+    <div class="features_items">
+        <!--features_items-->
+        <h2 class="title text-center">Features Items</h2>
+        @{
+            CommonInfo dataSanPham = (CommonInfo)HttpContext.Current.Application["dungChung"];
+            int id = ViewBag.id;
+        }
+        @foreach (sanPham item in dataSanPham.sanPhamDungChung().Where(i => i.maLoai==id))
+        {
+            <div class="col-sm-4">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                        <div class="productinfo text-center">
+                            <img src=@item.hinhDD alt="" />
+                            <h2>@item.giaBan VNĐ</h2>
+                            <p>@item.tenSP</p>
+                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        </div>
+                        <div class="product-overlay">
+                            <div class="overlay-content">
+                                <h2>@item.giaBan VNĐ</h2>
+                                <p>@item.tenSP</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="choose">
+                        <ul class="nav nav-pills nav-justified">
+                            <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                            <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+        <ul class="pagination">
+            <li class="active"><a href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">&raquo;</a></li>
+        </ul>
+    </div><!--features_items-->
+</div>

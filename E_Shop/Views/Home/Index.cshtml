@@ -1,0 +1,185 @@
+﻿@{
+    ViewBag.Title = "Home | E-Shop";
+}
+@using E_Shop.Models
+
+<div class="col-sm-9 padding-right">
+    <div class="features_items">
+        <!--features_items-->
+        <h2 class="title text-center">Features Items</h2>
+        @{ CommonInfo dataSanPham = (CommonInfo)HttpContext.Current.Application["dungChung"];}
+        @foreach (sanPham i in dataSanPham.sanPhamDungChung().
+        {
+            <div class="col-sm-4">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                        <div class="productinfo text-center">
+                            <img src="@i.hinhDD" alt="@i.tenSP" />
+                            <h2>@i.giaBan</h2>
+                            <p>@i.tenSP</p>
+                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        </div>
+                        <div class="product-overlay">
+                            <div class="overlay-content">
+                                <h2>@i.giaBan</h2>
+                                <p>@i.tenSP</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="choose">
+                        <ul class="nav nav-pills nav-justified">
+                            <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                            <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div><!--features_items-->
+
+    <div class="category-tab">
+        <!--category-tab-->
+        <div class="col-sm-12">
+            @{ 
+                CommonInfo dataLoaiSP = (CommonInfo)HttpContext.Current.Application["dungChung"];
+                int counter = 1;
+            }
+            <ul class="nav nav-tabs">
+                @foreach (loaiSP item in dataLoaiSP.loaiSPDungChung().Take(5))
+                {
+                    if (counter == 1)
+                    {
+                        <li class="active"><a href="#@item.maLoai" data-toggle="tab">@item.loaiHang</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="#@item.maLoai" data-toggle="tab">@item.loaiHang</a></li>
+                    }
+                    counter++;
+                }
+            </ul>
+        </div>
+        <div class="tab-content">
+            @{
+                counter = 1;
+            }
+            @foreach (loaiSP item in dataLoaiSP.loaiSPDungChung())
+            {
+                if (counter == 1)
+                {
+                    <div class="tab-pane fade active in" id=@item.maLoai>
+
+                        @foreach (sanPham i in z.sanPhamDungChung().Where(a => a.maLoai == @item.maLoai).OrderByDescending(a => a.ngayDang).Take(4))
+                        {
+                            <div class="col-sm-3">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <a href=@Url.Action("Details","Shop",new { id = @i.maSP})>
+                                                <img src=@i.hinhDD alt="" />
+                                                <h2>@i.giaBan VNĐ</h2>
+                                                <p>@i.tenSP</p>
+                                            </a>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="tab-pane fade" id=@item.maLoai>
+
+                        @foreach (sanPham i in dataSanPham.sanPhamDungChung().Where(a => a.maLoai == @item.maLoai).OrderByDescending(a => a.ngayDang).Take(4))
+                        {
+                            <div class="col-sm-3">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <a href=@Url.Action("Details","Shop",new { id = @i.maSP})>
+                                                <img src=@i.hinhDD alt="" />
+                                                <h2>@i.giaBan VNĐ</h2>
+                                                <p>@i.tenSP</p>
+                                            </a>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                counter++;
+            }
+            
+        </div>
+    </div><!--/category-tab-->
+
+    <div class="recommended_items">
+        <!--recommended_items-->
+        <h2 class="title text-center">recommended items</h2>
+
+        <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @{ 
+                    counter = 1;
+                }
+                
+                
+                <div class="item active">
+                    @foreach (sanPham item in dataSanPham.sanPhamDungChung().Take(3))
+                    {
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <a href="@Url.Action("Details","Shop",new { id = @item.maSP })">
+                                            <img src=@item.hinhDD alt="" />
+                                            <h2>@item.giaBan VNĐ</h2>
+                                            <p>@item.tenSP</p>
+                                        </a>
+                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="item">
+                    @foreach (sanPham item in dataSanPham.sanPhamDungChung().OrderByDescending(a => a.ngayDang).Take(3))
+                    {
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <a href="@Url.Action("Details","Shop",new { id = @item.maSP })">
+                                            <img src=@item.hinhDD alt="" />
+                                            <h2>@item.giaBan VNĐ</h2>
+                                            <p>@item.tenSP</p>
+                                        </a>
+                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </div><!--/recommended_items-->
+
+</div>

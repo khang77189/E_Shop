@@ -1,0 +1,5 @@
+D:\Học Tập\E_Shop\E_Shop\obj\Debug\E_Shop.csprojAssemblyReference.cache
+D:\Học Tập\E_Shop\E_Shop\obj\Debug\E_Shop.csproj.CoreCompileInputs.cache
+H:\E_Shop\E_Shop\obj\Debug\E_Shop.csprojAssemblyReference.cache
+H:\E_Shop\E_Shop\obj\Debug\E_Shop.csproj.CoreCompileInputs.cache
+H:\E_Shop\E_Shop\obj\Debug\E_Shop.csproj.AssemblyReference.cache

@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Blog | Eshopper";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+}
+@using Thay_Huy_Tuan_3_Entity.Models
+<div class="col-sm-9">
+    <div class="blog-post-area">
+        <h2 class="title text-center">Latest From our Blog</h2>
+        @{ 
+            CommonInfo dataBaiViet = (CommonInfo)HttpContext.Current.Application["dungChung"];
+        }
+        @foreach (baiViet item in dataBaiViet.baiVietDungChung().OrderByDescending(a=>a.ngayDang))
+        {
+            if (@item.daDuyet == true)
+            {
+                String[] dateTime = @item.ngayDang.ToString().Split(' ');
+                String time = dateTime[1] + " " + dateTime[2];
+                <div class="single-blog-post">
+                    <h3>@item.tenBV</h3>
+                    <div class="post-meta">
+                        <ul>
+                            <li><i class="fa fa-user"></i>@item.taiKhoan</li>
+                            <li><i class="fa fa-clock-o"></i>@time</li>
+                            <li><i class="fa fa-calendar"></i>@dateTime[0]</li>
+                        </ul>
+                        <span>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                        </span>
+                    </div>
+                    <a href="@Url.Action("BlogSingle","Blog",new { id = @item.maBV })">
+                        <img src=@item.hinhDD alt="">
+                    </a>
+                    <p>@item.ndTomTat</p>
+                    <a class="btn btn-primary" href=@Url.Action("BlogSingle","Blog",new { id = @item.maBV }) >Read More</a>
+                </div>
+            }
+
+        }
+        <div class="pagination-area">
+            <ul class="pagination">
+                <li><a href="" class="active">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href=""><i class="fa fa-angle-double-right"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
